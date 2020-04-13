@@ -8,6 +8,7 @@
         const regex = /^[a-zA-Z]{2,}$/;
         const email = document.getElementById("email");
         const errMessage = document.getElementById("errorMess");
+        const pass = document.getElementById("password");
         switch(id){
             case "fname":
                 const fName = document.getElementById("fname");
@@ -63,6 +64,33 @@
                     
                     email2.classList.remove("valid");
                     errMessage.innerHTML = "Invalid email. Enter a valid email";
+                    isValid = false;
+                };
+                break;
+            case "password":
+                
+                const passRegex = /^\w{5,10}$/;
+                if(passRegex.test(pass.value)){
+                    pass.classList.add("valid");
+                    errMessage.innerHTML = "";
+                    isValid = true;
+                } else {
+                    pass.classList.add("invalid");
+                    pass.classList.remove("valid");
+                    errMessage.innerHTML = "Enter 5 - 10 characters. No special characters.";
+                    isValid = false;
+                };
+                break;
+            case "password2":
+                const pass2 = document.getElementById("password2");
+                if(pass2.value === pass.value){
+                    pass2.classList.add("valid");
+                    errMessage.innerHTML = "";
+                    isValid = true;
+                } else {
+                    pass2.classList.add("invalid");
+                    pass2.classList.remove("valid");
+                    pass2.innerHTML = "Passwords do not match.";
                     isValid = false;
                 };
                 break;
